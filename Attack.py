@@ -4,6 +4,8 @@ class Attack:
         self.atk = atk_ctry
         self.de = de_ctry
 
+        self.atk.armies
+
         self.atk_dice = 3
         self.de_dice = 2
 
