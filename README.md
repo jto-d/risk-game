@@ -23,8 +23,6 @@ Card:
 Dice:
 - attacking dice (3)
 - defending dice (2)
-
-Turn:
     
 Init:
     - attacking player adds armies
