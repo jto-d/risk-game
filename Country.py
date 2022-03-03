@@ -1,9 +1,18 @@
 class Country:
-    def __init__(self, name: str, player: int, continent: str, adjacent: list):
+    def __init__(self, name: str, player: int, adjacent: list):
         self.name = name
         self.player = player
-        self.continent = continent
+        self.adjacent = adjacent
 
-        self.armies = 1
+        self.armies = 4
+
+    def __str__(self):
+        return self.name
+
+    def add_armies(self, num):
+        self.armies += num
+
+    def subtract_armies(self, num):
+        self.armies -= num
 
     

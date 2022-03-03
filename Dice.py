@@ -4,13 +4,13 @@ class Dice:
     def __init__(self, num):
         self.num = num
 
-    def roll(self):
+    def single_roll(self):
         return random.randint(1,6)
 
-    def roll_dice(self):
+    def roll(self):
         
         # roll amount of dice
-        roll = [self.roll() for i in range(self.num)]
+        roll = [self.single_roll() for i in range(self.num)]
 
         return sorted(roll, reverse = True)
 
