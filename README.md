@@ -40,3 +40,8 @@ Success:
 - if first success, win a card
 - choose to move amount of armies to the new country
     - need to leave one army and have at least one army in new country
+
+
+Possible Future:
+- Teach an ML model to play Risk, calculate optimal strategies
+- Full stack web app
