@@ -1,6 +1,9 @@
 class Player:
-    def __init__(self,name: str, index: int, countries: list, cards: list):
+    def __init__(self,name: str, index: int):
         self.name = name
         self.index = index
-        self.countries = countries
-        self.cards = cards
+        self.countries = []
+        self.cards = []
+
+    def __str__(self):
+        return self.name

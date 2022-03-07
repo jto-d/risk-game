@@ -2,17 +2,15 @@ from Dice import Dice
 from Attack import Attack
 from Country import Country
 from Map import Map
+from Player import Player
 
-# c = Country("Ukraine", 0, "Europe", [])
-# b = Country("Russia", 1, "Europe", [])
+num_players = 4
+p = [Player('Player ' + str(i), i) for i in range(1,num_players+1)]
 
-# c.armies = 5
-# b.armies = 4
+for player in p:
+    print(str(player))
 
-# a = Attack(c,b)
-
-# a.roll_dice()
-# a.compare_rolls()
-
-m = Map()
+m = Map(p)
 m.init_map()
+
+
