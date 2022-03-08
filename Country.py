@@ -4,7 +4,7 @@ class Country:
         self.player = player
         self.adjacent = adjacent
 
-        self.armies = 4
+        self.armies = 1
 
     def __str__(self):
         return self.name

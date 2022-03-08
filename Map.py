@@ -1,4 +1,5 @@
 from Country import Country
+from Player import Player
 import random
 
 class Map:
@@ -28,13 +29,44 @@ class Map:
         random.shuffle(unowned_countries)
 
         # assign countries to players and overall list
-        index = 1
+        index = 0
         while unowned_countries != []:
             country = unowned_countries.pop(0)
             country.player = index
-            if index == 4:
-                index = 1
+
+            self.countries.append(country)
+            self.players[index].countries.append(country)
+
+            if index == 3:
+                index = 0
             else:
                 index += 1
-            self.countries.append(country)
+    
 
+    def calculate_armies(self, player: Player) -> int:
+        num_ctrys = len(player.countries)
+        if num_ctrys//3 > 3:
+            return num_ctrys//3
+        return 3
+
+    # a single player's turn
+    def indiv_turn(self, player: Player) -> None:
+        armies = self.calculate_armies(player)
+        print(f'You have {armies} armies to place')
+
+        while armies > 0:
+            print('Available Countries: ' + str([str(ctry) for ctry in player.countries]))
+            index = int(input('What index country do you want to add armies to?'))
+            add = 0
+            while add == 0 or add > armies:
+                add = int(input(f'How many armies would you like to add to {str(player.countries[index])}?'))
+            armies -= add
+
+
+
+    # # a round of turns for each player
+    # def turn(self):
+    #     for player in self.players:
+    #         self.indiv_turn(player)
+
+ 
