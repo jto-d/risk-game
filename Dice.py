@@ -11,8 +11,8 @@ class Dice:
         
         # roll amount of dice
         roll = [self.single_roll() for i in range(self.num)]
-
+        
+        # return list of length self.num of rolls in descending order
         return sorted(roll, reverse = True)
 
-        # # return list of length self.num of rolls in descending order
-        # return roll.sort(reverse = True)
+
