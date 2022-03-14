@@ -33,7 +33,8 @@ class Map:
         # assign countries to players and overall list
         index = 0
         
-        # add countries from the list of unowned_countries until empty
+        # add countries from the list of unowned_countries to respective players until no more unowned
+        
         while unowned_countries != []:
             country = unowned_countries.pop(0)
             country.player = index
@@ -41,6 +42,7 @@ class Map:
             self.countries.append(country)
             self.players[index].countries.append(country)
 
+            # if the index is the same as the length of players, reset the index
             if index == 3:
                 index = 0
             else:
