@@ -14,6 +14,8 @@ class Map:
         self.turn = 1
 
     def init_map(self):
+        
+        # open txt file with countries and their adjacencies
         with open("countries.txt", "r") as f:
             countries = f.read()
         countries = countries.split('\n')
@@ -30,6 +32,8 @@ class Map:
 
         # assign countries to players and overall list
         index = 0
+        
+        # add countries from the list of unowned_countries until empty
         while unowned_countries != []:
             country = unowned_countries.pop(0)
             country.player = index
