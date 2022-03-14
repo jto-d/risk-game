@@ -9,6 +9,9 @@ class Attack:
 
 
     # assumes that it is a valid attack
+    # calculate the amount of dice for each side in the attack
+    # set the amount of attack dice to self.atk_dice_num
+    # set the amount of defense dice to self.de_dice_num
     def calc_dice(self):
         self.atk_armies = self.atk_ctry.armies
         self.de_armies = self.de_ctry.armies
@@ -24,6 +27,7 @@ class Attack:
         else:
             self.de_dice_num = 2
     
+    # roll respective dice and keep the each roll to the sorted lists
     def roll_dice(self):
 
         self.calc_dice()
