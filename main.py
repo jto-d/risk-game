@@ -12,5 +12,5 @@ p = [Player('Player ' + str(i), i) for i in range(0,num_players)]
 m = Map(p)
 m.init_map()
 
-m.indiv_turn(p[0])
+m.play_round()
 
