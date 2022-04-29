@@ -73,13 +73,24 @@ class Map:
             add = 0
 
             # store the selected country in a string
-            country_name = str(player.countries[index])
+            country_name = player.countries[index]
             while add == 0 or add > armies:
                 add = int(input(f'How many armies would you like to add to {country_name}? '))
             armies -= add
             player.country_armies[country_name] += add
 
         print('Armies: ' + str(player.country_armies))
+
+    def atk_turn(self, player: Player, possible_attack_ctrys = {}) -> None:
+        
+        for key, value in player.country_armies.items():
+            if value > 1:
+                possible_attack_ctrys[key] = value
+
+        print(f'Possible Attack Countries {possible_attack_ctrys}')
+        
+        country_index = int(input('What index country do you want to attack with? '))
+
 
 
 
@@ -88,7 +99,8 @@ class Map:
         # initialize armies for the player's turn
         self.init_turn(player)
 
-        # let the player attack if they choose to
+        # let the player attack if they choose to'
+        self.atk_turn(player)
 
     # play a full round using all players
     def play_round(self, player_list = []):

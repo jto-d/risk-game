@@ -4,11 +4,12 @@ class Player:
     def __init__(self,name: str, index: int):
         self.name = name
         self.index = index
-        self.countries = []
+        self.countries = {}
         self.country_armies = {}
         self.cards = []
 
     def init_countries(self, ctry: Country):
+        self.countries[str(ctry)] = ctry
         self.country_armies[str(ctry)] = ctry.armies
 
     def __str__(self):
