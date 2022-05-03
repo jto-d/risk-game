@@ -1,10 +1,11 @@
 from Country import Country
 from Player import Player
+from Attack import Attack
 import random
 
 class Map:
     def __init__(self, players: list):
-        self.countries = []
+        self.countries = {}
         self.num_players = len(players)
         
         # list of player objects in the game
@@ -39,13 +40,13 @@ class Map:
             country = unowned_countries.pop(0)
             country.player = index
 
-            self.countries.append(country)
+            self.countries[str(country)] = country
 
             # initialize countries and armies dictionary
             self.players[index].init_countries(country)
 
             # store country objects to a player object
-            self.players[index].countries.append(country)
+            self.players[index].countries[str(country)] = country
 
             # if the index is the same as the length of players, reset the index
             if index == 3:
@@ -69,11 +70,9 @@ class Map:
             
             print('Available Countries: ' + str(player.country_armies))
             # print('Available Countries: ' + str([str(ctry) for ctry in player.countries]))
-            index = int(input('What index country do you want to add armies to? '))
+            country_name = input('What country do you want to add armies to? ')
             add = 0
 
-            # store the selected country in a string
-            country_name = player.countries[index]
             while add == 0 or add > armies:
                 add = int(input(f'How many armies would you like to add to {country_name}? '))
             armies -= add
@@ -89,7 +88,17 @@ class Map:
 
         print(f'Possible Attack Countries {possible_attack_ctrys}')
         
-        country_index = int(input('What index country do you want to attack with? '))
+        attack_country_name = input('What country do you want to attack with? ')
+
+        adjacent_countries = player.countries[attack_country_name].adjacent
+        print(f'Possible Countries to Attack {adjacent_countries}')
+
+        defend_country_name = input('What country do you want to attack? ')
+
+        attack = Attack(self.countries[attack_country_name], self.countries[defend_country_name])
+
+        attack.roll_dice()
+        attack.compare_rolls()
 
 
 
